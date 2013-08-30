@@ -54,21 +54,6 @@ void Board::stopMoving()
     moving = false;
 }
 
-void Board::mousePressEvent(QGraphicsSceneMouseEvent* event)
-{
-    if (moving)
-        QGraphicsItem::mousePressEvent(event);
-}
-
-void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
-{
-    if (moving) {
-        update();
-        QGraphicsItem::mouseReleaseEvent(event);
-        stopMoving();
-    }
-}
-
 void Board::resize(int argWidth, int argHeight)
 {
     prepareGeometryChange();
@@ -87,6 +72,21 @@ int Board::getWidth()
 int Board::getHeight()
 {
     return height;
+}
+
+void Board::mousePressEvent(QGraphicsSceneMouseEvent* event)
+{
+    if (moving)
+        QGraphicsItem::mousePressEvent(event);
+}
+
+void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
+{
+    if (moving) {
+        update();
+        QGraphicsItem::mouseReleaseEvent(event);
+        stopMoving();
+    }
 }
 
 void Board::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
