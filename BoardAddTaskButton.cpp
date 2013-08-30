@@ -31,6 +31,5 @@ void BoardAddTaskButton::mousePressEvent(QGraphicsSceneMouseEvent* event)
 
 void BoardAddTaskButton::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 {
-    qDebug("released");
     ((Board *) parentItem())->addTask();
 }

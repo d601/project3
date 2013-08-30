@@ -137,7 +137,6 @@ void Board::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 
 void Board::addTask()
 {
-    qDebug("adding task");
     tasks.append(new TaskUIElement(this));
     updateTaskPositions();
 }
