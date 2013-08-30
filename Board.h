@@ -16,6 +16,8 @@ class Board : public QGraphicsItem
         void resize(int argWidth, int argHeight);
         int getWidth();
         int getHeight();
+        void startMoving();
+        void stopMoving();
 
     protected:
         void advance(int step);
@@ -29,7 +31,7 @@ class Board : public QGraphicsItem
         int height;
         int minimumWidth;
         int minimumHeight;
-        // TODO: replace these with a state enum
+
         bool moving;
 
         int resizeBoxSize;

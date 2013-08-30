@@ -3,6 +3,7 @@
 
 #include <QGraphicsItem>
 #include <QPainter>
+#include <QGraphicsSceneMouseEvent>
 
 BoardTitleBar::BoardTitleBar(QGraphicsItem *parent, QString title)
     :QGraphicsItem(parent),
@@ -28,4 +29,10 @@ void BoardTitleBar::paint(QPainter *painter,
     painter->drawRect(0, 0, parent->getWidth(), height);
     painter->setPen(Qt::black);
     painter->drawText(0, 0, parent->getWidth(), height, Qt::AlignCenter, title);
+}
+
+void BoardTitleBar::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    ((Board *) parentItem())->startMoving();
+    event->ignore();
 }

@@ -11,6 +11,9 @@ class BoardTitleBar : public QGraphicsItem
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
 
+    protected:
+        void mousePressEvent(QGraphicsSceneMouseEvent *event);
+
     private:
         QString title;
         int height;

@@ -17,6 +17,7 @@ Board::Board()
      dragBox(this),
      titleBar(this, "unnamed")
 {
+    setFlag(ItemIsMovable);
 }
 
 QRectF Board::boundingRect() const
@@ -27,8 +28,6 @@ QRectF Board::boundingRect() const
 void Board::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                   QWidget *widget)
 {
-    setFlag(ItemIsMovable);
-
     // Draw the background box
     painter->setPen(Qt::NoPen);
     painter->setBrush(color);
@@ -45,18 +44,20 @@ void Board::advance(int step)
     // setPos(mapToParent(qrand() % 3 - 1, qrand() % 3 - 1));
 }
 
+void Board::startMoving()
+{
+    moving = true;
+}
+
+void Board::stopMoving()
+{
+    moving = false;
+}
+
 void Board::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
-    QPointF position = event->pos();
-
-    if (position.y() <= 16) {
-        update();
-        moving = true;
+    if (moving)
         QGraphicsItem::mousePressEvent(event);
-        return;
-    }
-
-    event->ignore();
 }
 
 void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
@@ -64,7 +65,7 @@ void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
     if (moving) {
         update();
         QGraphicsItem::mouseReleaseEvent(event);
-        moving = false;
+        stopMoving();
     }
 }
 
