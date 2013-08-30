@@ -7,7 +7,7 @@
 
 TaskUIElement::TaskUIElement(QGraphicsItem *parent)
     :QGraphicsItem(parent),
-     text("blank"),
+     text("some really long text that will cause some text-wrapping"),
      font("Helvetica", 12),
      minimumHeight(32)
 { }
@@ -17,14 +17,14 @@ QRectF TaskUIElement::boundingRect() const
     Board *parent = (Board *) parentItem(); 
 
     QFontMetrics fontMetrics = QFontMetrics(font);
-    boundingRect = fontMetrics.boundingRect(0,
-                                            0,
-                                            parent->getTaskWidth(),
-                                            minimumHeight,
-                                            Qt::TextWordWrap,
-                                            text);
+    QRect rect = fontMetrics.boundingRect(0,
+                                          0,
+                                          parent->getTaskWidth(),
+                                          minimumHeight,
+                                          Qt::TextWordWrap,
+                                          text);
     
-    return (QRectF) boundingRect;
+    return (QRectF) rect;
 }
 
 void TaskUIElement::paint(QPainter *painter,

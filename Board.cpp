@@ -91,6 +91,8 @@ void Board::resize(int argWidth, int argHeight)
     width = (argWidth < minimumWidth) ? minimumWidth : argWidth;
     height = (argHeight < minimumHeight) ? minimumHeight : argHeight;
 
+    updateTaskPositions();
+
     update();
 }
 
