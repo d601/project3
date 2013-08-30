@@ -50,16 +50,7 @@ void Board::advance(int step)
 void Board::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
     QPointF position = event->pos();
-    // Clicked resize box
-    /*
-    if ((position.x() >= width - resizeBoxSize) && (position.x() <= width)
-        && (position.y() >= height - resizeBoxSize) && (position.y() <= height)) {
-        resizeInitialPosition = event->pos();
-        resizing = true;
-    }
-    */
 
-    // Clicked title bar -> drag the window
     if (position.y() <= 16) {
         update();
         moving = true;
@@ -72,8 +63,6 @@ void Board::mousePressEvent(QGraphicsSceneMouseEvent* event)
 
 void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 {
-    // resizing = false;
-
     if (moving) {
         update();
         QGraphicsItem::mouseReleaseEvent(event);
@@ -84,36 +73,15 @@ void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 void Board::resize(int argWidth, int argHeight)
 {
     prepareGeometryChange();
-        
-    if (argWidth < minimumWidth)
-        width = minimumWidth;
-    if (argHeight < minimumHeight)
-        height = minimumHeight;
+      
+    width = (argWidth < minimumWidth) ? minimumWidth : argWidth;
+    height = (argHeight < minimumHeight) ? minimumHeight : argHeight;
 
     update();
 }
 
 void Board::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
-    /*
-    if (resizing) {
-        prepareGeometryChange();
-
-        QPointF d = event->pos() - resizeInitialPosition;
-
-        width += d.x();
-        if (width < resizeBoxSize)
-            width = resizeBoxSize;
-        height += d.y();
-        if (height < resizeBoxSize)
-            height = resizeBoxSize;
-
-        resizeInitialPosition = event->pos();
-
-        update();
-    }
-    */
-
     if (moving)
         QGraphicsItem::mouseMoveEvent(event);
 }
