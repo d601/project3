@@ -6,6 +6,7 @@ HEADERS = Window.h \
           Board.h \
           BoardResizeBox.h \
           BoardTitleBar.h \
+          BoardAddTaskButton.h \
           TaskUIElement.h
 
 SOURCES = main.cpp \
@@ -13,4 +14,5 @@ SOURCES = main.cpp \
           Board.cpp \
           BoardResizeBox.cpp \
           BoardTitleBar.cpp \
+          BoardAddTaskButton.cpp \
           TaskUIElement.cpp

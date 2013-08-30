@@ -1,6 +1,7 @@
 #include "Board.h"
 #include "BoardResizeBox.h"
 #include "BoardTitleBar.h"
+#include "BoardAddTaskButton.h"
 #include "TaskUIElement.h"
 
 #include <QPainter>
@@ -9,7 +10,7 @@
 #include <QDebug>
 
 Board::Board()
-    :color(60, qrand() % 190, qrand() % 240),
+    :color(60, 190, 240),
      width(200),
      height(200),
      minimumWidth(16),
@@ -17,6 +18,7 @@ Board::Board()
      resizeBoxSize(16),
      resizeBox(this),
      titleBar(this, "unnamed"),
+     addTaskButton(this),
      taskSpacing(16),
      margin(8)
 {
@@ -62,9 +64,11 @@ void Board::updateTaskPositions()
     for (i = tasks.begin(); i != tasks.end(); i++) {
         (* i)->setPos(margin, painterPositionY);
         painterPositionY += (* i)->boundingRect().height();
-        if (i != tasks.end())
+        // if (i != tasks.end())
             painterPositionY += taskSpacing;
     }
+
+    addTaskButton.setPos(margin, painterPositionY);
 }
 
 void Board::advance(int step)

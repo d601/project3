@@ -6,6 +6,7 @@
 
 #include "BoardResizeBox.h"
 #include "BoardTitleBar.h"
+#include "BoardAddTaskButton.h"
 #include "TaskUIElement.h"
 
 class Board : public QGraphicsItem
@@ -43,6 +44,7 @@ class Board : public QGraphicsItem
 
         BoardResizeBox resizeBox;
         BoardTitleBar titleBar;
+        BoardAddTaskButton addTaskButton;
 
         QList<TaskUIElement *> tasks;        
         int taskSpacing;
