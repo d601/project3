@@ -13,6 +13,8 @@ class Board : public QGraphicsItem
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
         void resize(int argWidth, int argHeight);
+        int getWidth();
+        int getHeight();
 
     protected:
         void advance(int step);

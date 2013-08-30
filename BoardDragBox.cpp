@@ -28,9 +28,9 @@ void BoardDragBox::paint(QPainter *painter,
 // window coordinates
 QPointF BoardDragBox::getCorner() const
 {
-    QGraphicsItem *parent = parentItem();
-    int x = (parent->boundingRect()).width() - size;
-    int y = (parent->boundingRect()).height() - size;
+    Board *parent = (Board *) parentItem();
+    int x = parent->getWidth() - size;
+    int y = parent->getHeight() - size;
     return QPointF(x, y);
 }
 
@@ -53,13 +53,13 @@ void BoardDragBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     if (!resizing)
         return;
 
-    QGraphicsItem *parent = parentItem();
+    Board *parent = (Board *) parentItem();
     
     QPointF mouseDelta = event->pos() - resizeInitialPosition;
 
-    int width = (parent->boundingRect()).width() + mouseDelta.x();
-    int height = (parent->boundingRect()).height() + mouseDelta.y();
-    ((Board *) parent)->resize(width, height);
+    int width = parent->getWidth() + mouseDelta.x();
+    int height = parent->getHeight() + mouseDelta.y();
+    parent->resize(width, height);
 
     resizeInitialPosition = event->pos();
 }

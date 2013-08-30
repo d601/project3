@@ -80,6 +80,16 @@ void Board::resize(int argWidth, int argHeight)
     update();
 }
 
+int Board::getWidth()
+{
+    return width;
+}
+
+int Board::getHeight()
+{
+    return height;
+}
+
 void Board::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
     if (moving)
