@@ -41,21 +41,17 @@ void BoardDragBox::mousePressEvent(QGraphicsSceneMouseEvent *event)
     // Perhaps there is a better way?
     resizeInitialPosition = event->pos();
     resizing = true;
-    qDebug("pressed");
 }
 
 void BoardDragBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     resizing = false;
-    qDebug("released");
 }
 
 void BoardDragBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if (!resizing)
         return;
-
-    qDebug("moved");
 
     QGraphicsItem *parent = parentItem();
     
