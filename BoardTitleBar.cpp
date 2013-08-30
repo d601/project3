@@ -6,7 +6,8 @@
 
 BoardTitleBar::BoardTitleBar(QGraphicsItem *parent, QString title)
     :QGraphicsItem(parent),
-     title(title)
+     title(title),
+     height(16)
 {
 
 }
