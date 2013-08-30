@@ -3,7 +3,7 @@
 
 #include <TaskUIElement.h>
 
-taskeUIElement::taskUIElement()
+TaskUIElement::taskUIElement()
 { }
 
 QRectF boundingRect() const
@@ -12,14 +12,14 @@ QRectF boundingRect() const
     return QRectF(0, 0, 16, 16);
 }
 
-void taskeUIElement::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+void TaskUIElement::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                            QWidget *widget)
 {
    if (!text)
         drawBlankTask(painter);
 }
 
-void drawBlankTask(QPainter *painter)
+void TaskUIElement::drawBlankTask(QPainter *painter)
 {
     painter->setBrush(Qt::white);
     painter->drawRect(0, 0, 16, 16);

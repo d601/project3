@@ -1,6 +1,7 @@
 #include "Board.h"
 #include "BoardDragBox.h"
 #include "BoardTitleBar.h"
+#include "TaskUIElement"
 
 #include <QPainter>
 #include <QStyleOption>

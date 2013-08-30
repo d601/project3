@@ -3,7 +3,7 @@
 
 #include <QGraphicsItem>
 
-class taskUIElement : public QGraphicsItem
+class TaskUIElement : public QGraphicsItem
 {
     public:
         taskUIElement();
