@@ -23,6 +23,7 @@ class Board : public QGraphicsItem
         int getHeight();
         void startMoving();
         void stopMoving();
+        void addTask();
 
     protected:
         void advance(int step);

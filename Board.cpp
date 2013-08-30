@@ -10,7 +10,7 @@
 #include <QDebug>
 
 Board::Board()
-    :color(60, 190, 240),
+    :color(60, 100, 240),
      width(200),
      height(200),
      minimumWidth(16),
@@ -133,4 +133,11 @@ void Board::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
     if (moving)
         QGraphicsItem::mouseMoveEvent(event);
+}
+
+void Board::addTask()
+{
+    qDebug("adding task");
+    tasks.append(new TaskUIElement(this));
+    updateTaskPositions();
 }

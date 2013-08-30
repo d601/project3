@@ -1,6 +1,8 @@
 #include "BoardAddTaskButton.h"
+#include "Board.h"
 
 #include <QGraphicsItem>
+#include <QDebug>
 
 BoardAddTaskButton::BoardAddTaskButton(QGraphicsItem *parent)
     :QGraphicsItem(parent),
@@ -20,4 +22,15 @@ void BoardAddTaskButton::paint(QPainter *painter,
 {
     painter->setBrush(Qt::white);
     painter->drawRect(0, 0, size, size);
+}
+
+void BoardAddTaskButton::mousePressEvent(QGraphicsSceneMouseEvent* event)
+{
+    // This function must exist for ReleaseEvent to be called.
+}
+
+void BoardAddTaskButton::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
+{
+    qDebug("released");
+    ((Board *) parentItem())->addTask();
 }
