@@ -1,26 +1,48 @@
 #include <QPainter>
 #include <QStyleOption>
+#include <QFontMetrics>
 
-#include <TaskUIElement.h>
+#include "TaskUIElement.h"
+#include "Board.h"
 
-TaskUIElement::taskUIElement()
+TaskUIElement::TaskUIElement(QGraphicsItem *parent)
+    :QGraphicsItem(parent),
+     text("blank"),
+     font("Helvetica", 12),
+     minimumHeight(32)
 { }
 
-QRectF boundingRect() const
+QRectF TaskUIElement::boundingRect() const
 {
-    // dummy
-    return QRectF(0, 0, 16, 16);
+    Board *parent = (Board *) parentItem(); 
+
+    QFontMetrics fontMetrics = QFontMetrics(font);
+    return (QRectF) fontMetrics.boundingRect(0, 0,
+                                    parent->getTaskWidth(), minimumHeight,
+                                    Qt::TextWordWrap,
+                                    text);
 }
 
-void TaskUIElement::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-                           QWidget *widget)
+void TaskUIElement::paint(QPainter *painter,
+                          const QStyleOptionGraphicsItem *option,
+                          QWidget *widget)
 {
-   if (!text)
+   if (text == "")
         drawBlankTask(painter);
+
+    Board *parent = (Board *) parentItem(); 
+
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(Qt::white);
+    painter->drawRect(boundingRect());
+
+    painter->setPen(Qt::black);
+    painter->setFont(font);
+    painter->drawText(boundingRect(), Qt::TextWordWrap, text);
 }
 
 void TaskUIElement::drawBlankTask(QPainter *painter)
 {
     painter->setBrush(Qt::white);
-    painter->drawRect(0, 0, 16, 16);
+    painter->drawRect(0, 0, 32, 32);
 }

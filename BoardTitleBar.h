@@ -10,6 +10,7 @@ class BoardTitleBar : public QGraphicsItem
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
+        int getHeight();
 
     protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);

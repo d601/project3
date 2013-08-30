@@ -2,9 +2,11 @@
 #define BOARD_H
 
 #include <QGraphicsItem>
+#include <QList>
 
 #include "BoardDragBox.h"
 #include "BoardTitleBar.h"
+#include "TaskUIElement.h"
 
 class Board : public QGraphicsItem
 {
@@ -13,8 +15,10 @@ class Board : public QGraphicsItem
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
+        void updateTaskPositions();
         void resize(int argWidth, int argHeight);
         int getWidth();
+        int getTaskWidth();
         int getHeight();
         void startMoving();
         void stopMoving();
@@ -39,6 +43,10 @@ class Board : public QGraphicsItem
 
         BoardDragBox dragBox;
         BoardTitleBar titleBar;
+
+        QList<TaskUIElement *> tasks;        
+        int taskSpacing;
+        int margin;
 };
 
 #endif 

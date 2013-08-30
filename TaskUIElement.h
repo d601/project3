@@ -6,7 +6,7 @@
 class TaskUIElement : public QGraphicsItem
 {
     public:
-        taskUIElement();
+        TaskUIElement(QGraphicsItem *parent);
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
@@ -14,6 +14,8 @@ class TaskUIElement : public QGraphicsItem
 
     private:
         QString text;
-}
+        QFont font;
+        int minimumHeight;
+};
 
 #endif

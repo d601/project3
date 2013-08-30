@@ -36,3 +36,8 @@ void BoardTitleBar::mousePressEvent(QGraphicsSceneMouseEvent *event)
     ((Board *) parentItem())->startMoving();
     event->ignore();
 }
+
+int BoardTitleBar::getHeight()
+{
+    return height;
+}
