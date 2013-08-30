@@ -9,7 +9,9 @@
 Board::Board()
     :width(40), height(40), resizeBoxSize(16), title("Dummy window"),
      color(qrand() % 256, qrand() % 256, qrand() % 256),
-     dragBox(this)
+     dragBox(this),
+     minimumWidth(16),
+     minimumHeight(16)
 {
 }
 
@@ -62,7 +64,10 @@ void Board::mousePressEvent(QGraphicsSceneMouseEvent* event)
         update();
         moving = true;
         QGraphicsItem::mousePressEvent(event);
+        return;
     }
+
+    event->ignore();
 }
 
 void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
@@ -74,6 +79,18 @@ void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
         QGraphicsItem::mouseReleaseEvent(event);
         moving = false;
     }
+}
+
+void Board::resize(int argWidth, int argHeight)
+{
+    prepareGeometryChange();
+        
+    if (argWidth < minimumWidth)
+        width = minimumWidth;
+    if (argHeight < minimumHeight)
+        height = minimumHeight;
+
+    update();
 }
 
 void Board::mouseMoveEvent(QGraphicsSceneMouseEvent* event)

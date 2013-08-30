@@ -12,6 +12,7 @@ class Board : public QGraphicsItem
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
+        void resize(int argWidth, int argHeight);
 
     protected:
         void advance(int step);
@@ -23,8 +24,9 @@ class Board : public QGraphicsItem
         QColor color;
         int width;
         int height;
+        int minimumWidth;
+        int minimumHeight;
         // TODO: replace these with a state enum
-        bool resizing;
         bool moving;
 
         int resizeBoxSize;
