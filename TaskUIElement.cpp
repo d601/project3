@@ -17,10 +17,14 @@ QRectF TaskUIElement::boundingRect() const
     Board *parent = (Board *) parentItem(); 
 
     QFontMetrics fontMetrics = QFontMetrics(font);
-    return (QRectF) fontMetrics.boundingRect(0, 0,
-                                    parent->getTaskWidth(), minimumHeight,
-                                    Qt::TextWordWrap,
-                                    text);
+    boundingRect = fontMetrics.boundingRect(0,
+                                            0,
+                                            parent->getTaskWidth(),
+                                            minimumHeight,
+                                            Qt::TextWordWrap,
+                                            text);
+    
+    return (QRectF) boundingRect;
 }
 
 void TaskUIElement::paint(QPainter *painter,
