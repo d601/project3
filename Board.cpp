@@ -1,5 +1,6 @@
 #include "Board.h"
 #include "BoardDragBox.h"
+#include "BoardTitleBar.h"
 
 #include <QPainter>
 #include <QStyleOption>
@@ -7,11 +8,14 @@
 #include <QDebug>
 
 Board::Board()
-    :width(40), height(40), resizeBoxSize(16), title("Dummy window"),
-     color(qrand() % 256, qrand() % 256, qrand() % 256),
-     dragBox(this),
+    :color(qrand() % 256, qrand() % 256, qrand() % 256),
+     width(40),
+     height(40),
      minimumWidth(16),
-     minimumHeight(16)
+     minimumHeight(16),
+     resizeBoxSize(16),
+     dragBox(this),
+     titleBar(this, "unnamed")
 {
 }
 
@@ -29,12 +33,6 @@ void Board::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     painter->setPen(Qt::NoPen);
     painter->setBrush(color);
     painter->drawRect(0, 0, width, height);
-
-    // Draw the title bar
-    painter->setBrush(Qt::gray);
-    painter->drawRect(0, 0, width, 16);
-    painter->setPen(Qt::black);
-    painter->drawText(0, 0, width, 16, Qt::AlignCenter, title);
     
     // Draw the bounding box
     painter->setPen(Qt::black);

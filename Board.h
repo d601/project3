@@ -4,6 +4,7 @@
 #include <QGraphicsItem>
 
 #include "BoardDragBox.h"
+#include "BoardTitleBar.h"
 
 class Board : public QGraphicsItem
 {
@@ -34,8 +35,8 @@ class Board : public QGraphicsItem
         int resizeBoxSize;
         QPointF resizeInitialPosition;
 
-        QString title;
         BoardDragBox dragBox;
+        BoardTitleBar titleBar;
 };
 
 #endif 
