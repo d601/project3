@@ -1,5 +1,5 @@
 #include "Board.h"
-#include "BoardDragBox.h"
+#include "BoardResizeBox.h"
 #include "BoardTitleBar.h"
 #include "TaskUIElement.h"
 
@@ -15,7 +15,7 @@ Board::Board()
      minimumWidth(16),
      minimumHeight(16),
      resizeBoxSize(16),
-     dragBox(this),
+     resizeBox(this),
      titleBar(this, "unnamed"),
      taskSpacing(16),
      margin(8)
@@ -60,8 +60,6 @@ void Board::updateTaskPositions()
 
     QList<TaskUIElement *>::iterator i;
     for (i = tasks.begin(); i != tasks.end(); i++) {
-        // Not sure why we (* i). Saw it in an example. Cargo cult
-        // programming here.
         (* i)->setPos(margin, painterPositionY);
         painterPositionY += (* i)->boundingRect().height();
         if (i != tasks.end())

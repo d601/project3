@@ -1,13 +1,13 @@
-#ifndef BOARDDRAGBOX_H
-#define BOARDDRAGBOX_H
+#ifndef BOARDRESIZEBOX_H
+#define BOARDRESIZEBOX_H
 
 #include <QGraphicsItem>
 #include <QPainter>
 
-class BoardDragBox : public QGraphicsItem
+class BoardResizeBox : public QGraphicsItem
 {
     public:
-        BoardDragBox(QGraphicsItem *parent);
+        BoardResizeBox(QGraphicsItem *parent);
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);

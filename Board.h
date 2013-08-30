@@ -4,7 +4,7 @@
 #include <QGraphicsItem>
 #include <QList>
 
-#include "BoardDragBox.h"
+#include "BoardResizeBox.h"
 #include "BoardTitleBar.h"
 #include "TaskUIElement.h"
 
@@ -41,7 +41,7 @@ class Board : public QGraphicsItem
         int resizeBoxSize;
         QPointF resizeInitialPosition;
 
-        BoardDragBox dragBox;
+        BoardResizeBox resizeBox;
         BoardTitleBar titleBar;
 
         QList<TaskUIElement *> tasks;        

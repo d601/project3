@@ -1,21 +1,21 @@
-#include "BoardDragBox.h"
+#include "BoardResizeBox.h"
 #include "Board.h"
 
 #include <QGraphicsItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QDebug>
 
-BoardDragBox::BoardDragBox(QGraphicsItem *parent)
+BoardResizeBox::BoardResizeBox(QGraphicsItem *parent)
     :QGraphicsItem(parent), size(16)
 {
 }
 
-QRectF BoardDragBox::boundingRect() const
+QRectF BoardResizeBox::boundingRect() const
 {
     return QRectF(getCorner().x(), getCorner().y(), size, size);
 }
 
-void BoardDragBox::paint(QPainter *painter,
+void BoardResizeBox::paint(QPainter *painter,
                          const QStyleOptionGraphicsItem *option,
                          QWidget *widget)
 {
@@ -26,7 +26,7 @@ void BoardDragBox::paint(QPainter *painter,
 
 // Returns the upper left corner of the box with respect to the parent's
 // window coordinates
-QPointF BoardDragBox::getCorner() const
+QPointF BoardResizeBox::getCorner() const
 {
     Board *parent = (Board *) parentItem();
     int x = parent->getWidth() - size;
@@ -34,7 +34,7 @@ QPointF BoardDragBox::getCorner() const
     return QPointF(x, y);
 }
 
-void BoardDragBox::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void BoardResizeBox::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     // Record the mouse position when it clicks on the resize box
     // so we can calculate the delta when it moves
@@ -43,12 +43,12 @@ void BoardDragBox::mousePressEvent(QGraphicsSceneMouseEvent *event)
     resizing = true;
 }
 
-void BoardDragBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void BoardResizeBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     resizing = false;
 }
 
-void BoardDragBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void BoardResizeBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if (!resizing)
         return;
