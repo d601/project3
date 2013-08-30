@@ -17,3 +17,6 @@
 
 # Temporary files
 *.swp
+
+# Generated makefile (use qmake!)
+Makefile
