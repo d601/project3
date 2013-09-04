@@ -56,8 +56,6 @@ void Board::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 // the preceding items.
 void Board::updateTaskPositions()
 {
-    // TODO: boundingRect() is defined terms of QReal. I need to convert all
-    // the dimension ints to QReals.
     int painterPositionY = titleBar.getHeight() + margin;
 
     QList<TaskUIElement *>::iterator i;

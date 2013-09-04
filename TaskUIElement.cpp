@@ -3,13 +3,15 @@
 #include <QFontMetrics>
 
 #include "TaskUIElement.h"
+#include "TaskUIElementDeleteButton.h"
 #include "Board.h"
 
 TaskUIElement::TaskUIElement(QGraphicsItem *parent)
     :QGraphicsItem(parent),
      text("some really long text that will cause some text-wrapping"),
      font("Helvetica", 12),
-     minimumHeight(32)
+     minimumHeight(32),
+     deleteButton(this)
 { }
 
 QRectF TaskUIElement::boundingRect() const

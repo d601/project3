@@ -7,7 +7,8 @@ HEADERS = Window.h \
           BoardResizeBox.h \
           BoardTitleBar.h \
           BoardAddTaskButton.h \
-          TaskUIElement.h
+          TaskUIElement.h \
+          TaskUIElementDeleteButton.h
 
 SOURCES = main.cpp \
           Window.cpp \
@@ -15,4 +16,5 @@ SOURCES = main.cpp \
           BoardResizeBox.cpp \
           BoardTitleBar.cpp \
           BoardAddTaskButton.cpp \
-          TaskUIElement.cpp
+          TaskUIElement.cpp \
+          TaskUIElementDeleteButton.cpp

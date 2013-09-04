@@ -3,6 +3,8 @@
 
 #include <QGraphicsItem>
 
+#include "TaskUIElementDeleteButton.h"
+
 class TaskUIElement : public QGraphicsItem
 {
     public:
@@ -16,6 +18,7 @@ class TaskUIElement : public QGraphicsItem
         QString text;
         QFont font;
         int minimumHeight;
+        TaskUIElementDeleteButton deleteButton;
 };
 
 #endif
